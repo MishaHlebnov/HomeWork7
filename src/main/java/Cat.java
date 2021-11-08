@@ -1,35 +1,30 @@
 public class Cat {
     private String name;
     private int appetite;
-    private int hunger;
-    private int satiety;
+    private boolean hunger;
 
     public Cat(String name, int appetite) {
         this.name = name;
         this.appetite = appetite;
-        this.hunger = appetite;
+        this.hunger = false;
     }
     public boolean eat(Plate p) {
         if (getAppetite() > p.getFood()){
             System.out.println("Котику " + name + " Нужна миска больше");
+            System.out.println(getHunger());
             return false;
         }
         p.decreaseFood(getAppetite());
+        hunger = true;
         System.out.println("Котик " + name + " поел");
-        cat_Hunger();
+        System.out.println(getHunger());
         return true;
     }
-
-    public void cat_Hunger (){
-        satiety = getHunger();
-        System.out.println(true);
-    }
-
     public int getAppetite() {
         return appetite;
     }
 
-    public int getHunger() {
+    public boolean getHunger() {
         return hunger;
     }
 }
